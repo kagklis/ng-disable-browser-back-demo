@@ -1,0 +1,19 @@
+<h1>Second Step!</h1>
+<p>Disable navigation and try to go back using the browser's back button.</p>
+<div *ngIf="{ disableButton: (disableButton$ | async) } as context">
+   <button
+      class="btn"
+      [ngClass]="context.disableButton ? 'btn-danger' : 'btn-success'"
+      (click)="disable()"
+   >
+      Navigation {{ context.disableButton ? "Disabled" : "Enabled" }}
+   </button>
+   <button
+      class="btn btn-primary"
+      routerLink="/first"
+      [disabled]="context.disableButton"
+   >
+      Back
+   </button>
+   <button class="btn btn-primary" routerLink="/last">Next</button>
+</div>
